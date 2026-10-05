@@ -13,7 +13,7 @@ A Chrome extension that lets you select emails in Gmail and either combine their
 
 ## Demo
 
-[![Watch the demo on YouTube](docs/Banner.png)](https://www.youtube.com/watch?v=DGqkJ7oy8C0)
+[![](docs/Banner.png)](https://www.youtube.com/watch?v=DGqkJ7oy8C0)
 
 ## Code Map (Excalidraw)
 
