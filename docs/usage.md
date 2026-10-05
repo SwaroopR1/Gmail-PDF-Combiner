@@ -36,4 +36,4 @@
 
 All processing happens locally. No email content, attachment data, or selection information is sent to external servers.
 
-For full details, see the [Privacy Policy](../PRIVACY.md).
+For full details, see the [Privacy Policy](../Privacy_Policy.md).
