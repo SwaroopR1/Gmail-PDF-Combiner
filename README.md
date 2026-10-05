@@ -11,7 +11,7 @@ A Chrome extension that lets you select emails in Gmail and either combine their
 - **Failure tracking** – Any skipped emails are saved locally so you can review them later in the “Previous Failed Emails” window.
 - **100% local processing** – PDF merging and ZIP creation use bundled JavaScript libraries (`pdf-lib`, `fflate`). No attachment data ever leaves your device.
 
-## Demo
+## Demo Video
 
 [![](docs/Banner.png)](https://www.youtube.com/watch?v=DGqkJ7oy8C0)
 
