@@ -1,7 +1,7 @@
 
-## Installation
-
 # Installation and Usage
+
+## Installation
 
 ### From the Chrome Web Store
 *(Coming soon — link will be added here.)*
