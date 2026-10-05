@@ -41,7 +41,7 @@ This data never leaves your device. You can remove it at any time by uninstallin
 The extension requests the following permissions, each strictly necessary for its core functionality:
 
 - **`storage`:** Used to persist your settings and failure records locally, as described above.
-- **`scripting`:** Used to inject the necessary libraries and content script into the Gmail tab when you first use the extension.
+- **`scripting`:** Used to inject the necessary libraries and content script into the Gmail tab when you first click on the extension after loading a Gmail page.
 - **`host_permissions` for `https://mail.google.com/*`:** Required so the extension can read the Gmail page, fetch the Print View of selected threads, and download PDF attachments.
 
 
