@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Gmail PDF Combiner",
+  "version": "1.0.0",
+  "description": "Track Gmail selections and combine their PDF attachments.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+
+  "permissions": ["storage", "scripting"],
+  "host_permissions": ["https://mail.google.com/*"],
+
+  "action": {
+    "default_title": "Gmail PDF Combiner",
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+    }
+    
+  },
+
+    "web_accessible_resources": [
+    {
+      "resources": [
+        "src/content/css_files/section-2-progress.css",
+        "src/content/css_files/section-5-file-prompt.css",
+        "src/content/css_files/section-5-page-prompt.css"
+      ],
+
+      "matches": ["https://mail.google.com/*"]
+    }
+  ]
+
+}

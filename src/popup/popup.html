@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Gmail PDF Combiner</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+
+  <body class="not-gmail">
+    <div class="switch-row">
+      
+      <a 
+        href="https://github.com/SwaroopR1/Gmail-PDF-Combiner"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="GitHub">
+        GitHub
+      </a>
+
+      <span class="switch-label">Invoice Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="invoiceModeToggle" />
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <button id="startBtn" disabled>
+      <span class="btn-title">Start Selection</span>
+      <span class="btn-hint">Prior selection won’t be recognized.</span>
+    </button>
+
+    <button id="continueBtn" disabled>Continue Selection</button>
+
+    <div class="btn-row">
+      <button id="stopBtn" disabled>Stop</button>
+      <button id="showBtn" disabled>Show Emails</button>
+    </div>
+
+    <button id="combineBtn" disabled>Combine PDFs from Selected Emails</button>
+    <button id="downloadBtn" disabled>Download All PDFs</button>
+    <button id="resetBtn" disabled>Reset</button>
+    <button id="failedBtn" disabled>Previous Failed Emails/PDFs</button>
+
+    <pre id="output"></pre>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

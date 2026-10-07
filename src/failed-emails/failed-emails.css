@@ -1,0 +1,77 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
+  background: #fafafa;
+  color: #202124;
+  height: 100%;
+}
+
+#meta {
+  padding: 10px 16px;
+  font-size: 12px;
+  color: #5f6368;
+  background: #f1f3f4;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+#list {
+  padding: 12px 16px 24px 16px;
+}
+
+.item {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+
+.item .num {
+  display: inline-block;
+  background: #1a73e8;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 1px 8px;
+  margin-bottom: 8px;
+}
+
+.item .row {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.item .row .label {
+  flex: 0 0 68px;
+  font-weight: 600;
+  color: #5f6368;
+}
+
+.item .row .value {
+  flex: 1 1 auto;
+  word-break: break-word;
+}
+
+.item .row .value.sender {
+  font-weight: 500;
+  color: #202124;
+}
+
+.item .reason {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #b00020;
+  font-style: italic;
+}
+
+.empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: #5f6368;
+  font-size: 14px;
+}

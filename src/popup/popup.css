@@ -1,0 +1,343 @@
+/* ------------------------------------------------------------------
+    Root tokens — medium-weight flat palette (no gradients)
+    ------------------------------------------------------------------ */
+:root {
+color-scheme: light only;
+
+/* Enabled accents — heavy enough to read as "colourful" */
+--acc-green-bg:   #66bb6a;  --acc-green-bd:   #4caf50;
+--acc-slate-bg:   #78909c;  --acc-slate-bd:   #607d8b;
+--acc-orange-bg:  #ff9800;  --acc-orange-bd:  #fb8c00;
+--acc-purple-bg:  #ab47bc;  --acc-purple-bd:  #9c27b0;
+--acc-blue-bg:    #42a5f5;  --acc-blue-bd:    #2196f3;
+--acc-teal-bg:    #26a69a;  --acc-teal-bd:    #009688;
+--acc-red-bg:     #ef5350;  --acc-red-bd:     #e53935;
+--acc-pink-bg:    #f06292;  --acc-pink-bd:    #ec407a;
+
+/* Strict gray / black / white trio (disabled + not-gmail) */
+--mono-bg:        #e0e0e0;
+--mono-bg-hover:  #d6d6d6;
+--mono-border:    #c8c8c8;
+--mono-text:      #6b6b6b;
+--mono-text-soft: #8c8c8c;
+--mono-highlight: #ffffff;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+width: 280px;
+padding: 10px;
+font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+font-size: 13px;
+line-height: 1.35;
+color: #000;
+background: #fff;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+input, label, button, pre {
+-webkit-text-fill-color: currentColor;
+}
+
+/* ==================================================================
+    BASE BUTTON — flat, gray/black/white by default.
+    Colourful accents are applied later, only inside body.gmail.
+    ================================================================== */
+button {
+display: block;
+width: 100%;
+margin: 6px 0;
+padding: 9px 12px;
+cursor: pointer;
+font: inherit;
+font-size: 13px;
+line-height: 1.3;
+font-weight: 400;
+color: var(--mono-text);
+background: var(--mono-bg);
+border: 1px solid var(--mono-border);
+border-radius: 8px;
+box-shadow: none;
+transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.05s ease;
+}
+
+/* ==================================================================
+    GMAIL MODE — enabled buttons get the heavier palette.
+    Flat colour, no gradients, white text.
+    ================================================================== */
+body.gmail button:not(:disabled) {
+font-weight: 600;
+color: #fff;
+background: var(--acc-slate-bg);
+border-color: var(--acc-slate-bd);
+}
+body.gmail button:not(:disabled):hover {
+filter: brightness(0.94);
+}
+body.gmail button:not(:disabled):active {
+transform: translateY(1px);
+filter: brightness(0.88);
+}
+
+/* Per-button accents (still gated behind body.gmail) */
+body.gmail #startBtn:not(:disabled) {
+background:   var(--acc-green-bg);
+border-color: var(--acc-green-bd);
+}
+body.gmail #stopBtn:not(:disabled) {
+background:   var(--acc-orange-bg);
+border-color: var(--acc-orange-bd);
+}
+body.gmail #showBtn:not(:disabled) {
+background:   var(--acc-purple-bg);
+border-color: var(--acc-purple-bd);
+}
+body.gmail #combineBtn:not(:disabled) {
+background:   var(--acc-blue-bg);
+border-color: var(--acc-blue-bd);
+}
+body.gmail #downloadBtn:not(:disabled) {
+background:   var(--acc-teal-bg);
+border-color: var(--acc-teal-bd);
+}
+body.gmail #resetBtn:not(:disabled) {
+background:   var(--acc-red-bg);
+border-color: var(--acc-red-bd);
+}
+body.gmail #failedBtn:not(:disabled) {
+background:   var(--acc-pink-bg);
+border-color: var(--acc-pink-bd);
+}
+
+/* Focus ring */
+button:focus-visible {
+outline: 2px solid #1a73e8;
+outline-offset: 2px;
+}
+
+/* ==================================================================
+    DISABLED — strict gray/black/white, never colourful, never bold.
+    ================================================================== */
+button:disabled {
+cursor: default;
+color: var(--mono-text) !important;
+background: var(--mono-bg) !important;
+border: 1px solid var(--mono-border) !important;
+font-weight: 400 !important;
+letter-spacing: normal !important;
+box-shadow: none !important;
+filter: none !important;
+transform: none !important;
+}
+
+/* ==================================================================
+    NOT ON GMAIL — every button (enabled AND disabled) is grayscale.
+    ================================================================== */
+body.not-gmail button {
+cursor: default;
+color: var(--mono-text) !important;
+background: var(--mono-bg) !important;
+border: 1px solid var(--mono-border) !important;
+font-weight: 400 !important;
+letter-spacing: normal !important;
+box-shadow: none !important;
+filter: none !important;
+transform: none !important;
+}
+
+/* ------------------------------------------------------------------
+    Start button (title + hint)
+    ------------------------------------------------------------------ */
+#startBtn { padding: 10px 12px; }
+#startBtn .btn-title { display: block; font-size: 13px; }
+#startBtn .btn-hint {
+display: block;
+font-size: 10px;
+font-weight: 400;
+margin-top: 2px;
+font-style: italic;
+}
+
+/* Gmail + enabled: white title, translucent white hint */
+body.gmail #startBtn:not(:disabled) .btn-title {
+font-weight: 600;
+color: #fff;
+}
+body.gmail #startBtn:not(:disabled) .btn-hint {
+color: rgba(255, 255, 255, 0.85);
+}
+
+/* Gray state: dark gray title, muted hint */
+body.not-gmail #startBtn .btn-title,
+#startBtn:disabled .btn-title {
+font-weight: 400;
+color: var(--mono-text);
+}
+body.not-gmail #startBtn .btn-hint,
+#startBtn:disabled .btn-hint {
+color: var(--mono-text-soft);
+}
+
+/* ------------------------------------------------------------------
+    Two-button row (Stop / Show Emails)
+    ------------------------------------------------------------------ */
+.btn-row {
+display: flex;
+gap: 6px;
+margin: 6px 0;
+}
+.btn-row button {
+margin: 0;
+flex: 1 1 0;
+width: auto;
+}
+
+/* ------------------------------------------------------------------
+    Invoice Mode switch
+    ------------------------------------------------------------------ */
+.switch-row {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 8px 4px 10px 4px;
+margin-bottom: 8px;
+border-bottom: 1px solid #e0e0e0;
+}
+body.not-gmail .switch-row {
+border-bottom-color: var(--mono-border);
+}
+
+.switch-label {
+font-size: 13px;
+font-weight: 600;
+color: #000;
+}
+body.not-gmail .switch-label {
+font-weight: 400;
+color: var(--mono-text);
+}
+
+.switch {
+position: relative;
+display: inline-block;
+width: 36px;
+height: 20px;
+flex-shrink: 0;
+}
+.switch input {
+position: absolute;
+inset: 0;
+width: 100%;
+height: 100%;
+margin: 0;
+opacity: 0;
+cursor: pointer;
+}
+.switch input:disabled { cursor: default; }
+
+.slider {
+position: absolute;
+inset: 0;
+background: #c8c8c8;
+border-radius: 20px;
+border: 1px solid #b0b0b0;
+transition: background-color 0.2s ease, border-color 0.2s ease;
+pointer-events: none;
+box-shadow: none;
+}
+.slider:before {
+position: absolute;
+content: "";
+height: 14px;
+width: 14px;
+left: 2px;
+top: 2px;
+background: #ffffff;
+border-radius: 50%;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+transition: transform 0.2s ease;
+}
+
+/* Heavier ON pill — only in body.gmail */
+body.gmail .switch input:checked + .slider {
+background: var(--acc-blue-bg);
+border-color: var(--acc-blue-bd);
+}
+body.gmail .switch input:checked + .slider:before {
+transform: translateX(16px);
+background: #ffffff;
+}
+
+.switch input:focus-visible + .slider {
+outline: 2px solid #1a73e8;
+outline-offset: 2px;
+}
+
+/* Gray OFF / disabled / not-gmail pill */
+.switch input:disabled + .slider,
+body.not-gmail .switch input + .slider,
+body.not-gmail .switch input:checked + .slider {
+background: #dcdcdc;
+border-color: #c8c8c8;
+box-shadow: none;
+}
+.switch input:disabled + .slider:before,
+body.not-gmail .switch input + .slider:before,
+body.not-gmail .switch input:checked + .slider:before {
+background: #f5f5f5;
+box-shadow: none;
+}
+
+/* Gmail + disabled (e.g. while Combine / Download All is running) —
+    force the pill and knob to their gray state even if the toggle
+    was ON, so it reads as "locked out" alongside the buttons. The
+    knob's transform is intentionally left alone so an already-ON
+    toggle stays visually on the right, just grayed out. */
+body.gmail .switch input:disabled + .slider,
+body.gmail .switch input:disabled:checked + .slider {
+background: #dcdcdc !important;
+border-color: #c8c8c8 !important;
+box-shadow: none !important;
+}
+body.gmail .switch input:disabled + .slider:before,
+body.gmail .switch input:disabled:checked + .slider:before {
+background: #f5f5f5 !important;
+box-shadow: none !important;
+}
+body.gmail .switch input:disabled {
+cursor: default;
+}
+
+/* ------------------------------------------------------------------
+    Output area
+    ------------------------------------------------------------------ */
+#output {
+display: block;
+margin: 8px 0 0 0;
+padding: 8px 10px;
+font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+font-size: 12px;
+line-height: 1.45;
+color: #000;
+background: #fafafa;
+border: 1px solid #e0e0e0;
+border-radius: 6px;
+white-space: pre-wrap;
+word-break: break-word;
+max-height: 200px;
+overflow: auto;
+}
+#output:empty { display: none; }
+
+body.not-gmail #output {
+color: var(--mono-text);
+background: var(--mono-bg);
+border-color: var(--mono-border);
+}
