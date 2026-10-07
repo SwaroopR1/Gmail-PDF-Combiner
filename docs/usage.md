@@ -4,7 +4,7 @@
 ## Installation
 
 ### From the Chrome Web Store
-*(Coming soon — link will be added here.)*
+https://chromewebstore.google.com/detail/gmail-pdf-combiner/lfikaeeoacplhlgdjkijapbkcpdlohfk?hl=en-US&utm_source=ext_sidebar
 
 ### Manual (Developer Mode)
 1. Clone this repository or download the ZIP.
