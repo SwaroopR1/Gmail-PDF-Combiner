@@ -2,6 +2,8 @@
 
 A Chrome extension that lets you select emails in Gmail and either combine their PDF attachments into a single document or download them all as a ZIP archive. Everything runs locally in your browser — no data is sent to any server.
 
+Available at: https://chromewebstore.google.com/detail/gmail-pdf-combiner/lfikaeeoacplhlgdjkijapbkcpdlohfk?hl=en-US&utm_source=ext_sidebar
+
 ## Features
 
 - **Select emails in Gmail** – Click the extension icon, start selection, and pick the emails you want.
