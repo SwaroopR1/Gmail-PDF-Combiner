@@ -15,7 +15,7 @@ Available at: https://chromewebstore.google.com/detail/gmail-pdf-combiner/lfikae
 
 ## Demo Video
 
-[![](docs/YouTube Thumbnail.png)](https://www.youtube.com/watch?v=DGqkJ7oy8C0)
+[![](docs/Banner.png)](https://www.youtube.com/watch?v=DGqkJ7oy8C0)
 
 ## Code Map (Excalidraw)
 
