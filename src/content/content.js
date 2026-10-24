@@ -22,6 +22,7 @@
 
 
   function findRow(target) {
+  // 1) Gmail keeps this for accessibility.
   const byRole = target.closest('tr[role="row"]');
   if (byRole) return byRole;
   return target.closest('tr');
@@ -41,7 +42,7 @@
     return withEmail.getAttribute("email") || withEmail.textContent.trim();
   }
 
-  // Fallback 2: (fragile — safety net only).
+  // Fallback 2: fragile — safety net only
   const senderEl =
       row.querySelector(".yW span[email]") ||
       row.querySelector(".yP") ||
@@ -99,10 +100,8 @@
         selected.set(info.id, info); // insertion order --> selection order
       }
     } else {
-      const stillPresent = document.querySelector(`tr[role="row"] [data-legacy-thread-id="${info.id}"]`);
     // Do NOT remove if an email has been deselected without the user's knowledge.
-      if (!stillPresent) return; 
-
+      if (!row.isConnected) return;
     // Only remove if the user explicitly sees that an email has been deselected.
       selected.delete(info.id);
 
