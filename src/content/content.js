@@ -28,6 +28,50 @@
   }
 
 
+  function getSender(row){
+  // Primary: Gmail's data-* attribute for the sender hovercard.
+  const hover = row.querySelector("span[data-hovercard-id]");
+  if (hover) {
+    return hover.getAttribute("data-hovercard-id") || hover.textContent.trim();
+  }
+
+  // Fallback 1: the custom `email` attribute.
+  const withEmail = row.querySelector("span[email]");
+  if (withEmail) {
+    return withEmail.getAttribute("email") || withEmail.textContent.trim();
+  }
+
+  // Fallback 2: (fragile — safety net only).
+  const senderEl =
+      row.querySelector(".yW span[email]") ||
+      row.querySelector(".yP") ||
+      row.querySelector(".zF");
+  const sender = senderEl
+    ? senderEl.getAttribute("email") || senderEl.textContent.trim()
+    : "(unknown sender)";
+  return sender;
+  }
+
+
+  function getSubject(row) {
+  // Primary: the span that carries the thread-id — its text is the subject.
+  const threadSpan = row.querySelector("[data-legacy-thread-id]");
+  if (threadSpan) {
+    const t = threadSpan.textContent.trim();
+    if (t) return t;
+  }
+
+  // Fallback: .bog wrapper (safety net only).
+  const bog = row.querySelector(".bog");
+  if (bog) {
+    const t = bog.textContent.trim();
+    if (t) return t;
+  }
+
+  return "(no subject)";
+  }
+
+
   function getEmailInfo(row) {
     if (!row) return null;
 
@@ -36,16 +80,9 @@
 
     if (!id) return null;
 
-    const subjectEl = row.querySelector(".bog");
-    const subject = subjectEl ? subjectEl.textContent.trim() : "(no subject)";
+    const subject = getSubject(row);
 
-    const senderEl =
-      row.querySelector(".yW span[email]") ||
-      row.querySelector(".yP") ||
-      row.querySelector(".zF");
-    const sender = senderEl
-      ? senderEl.getAttribute("email") || senderEl.textContent.trim()
-      : "(unknown sender)";
+    const sender = getSender(row);
 
     return { id, sender, subject }; // It is exactly equivalent to writing: return { id: id, sender: sender, subject: subject };
   }
