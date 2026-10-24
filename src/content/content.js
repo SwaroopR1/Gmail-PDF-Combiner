@@ -20,6 +20,14 @@
   const pending = new Set();  // a Set of <tr> row elements that need to be re-checked.
   let flushTimer = null;
 
+
+  function findRow(target) {
+  const byRole = target.closest('tr[role="row"]');
+  if (byRole) return byRole;
+  return target.closest('tr');
+  }
+
+
   function getEmailInfo(row) {
     if (!row) return null;
 
@@ -54,7 +62,7 @@
         selected.set(info.id, info); // insertion order --> selection order
       }
     } else {
-      const stillPresent = document.querySelector(`tr.zA [data-legacy-thread-id="${info.id}"]`);
+      const stillPresent = document.querySelector(`tr[role="row"] [data-legacy-thread-id="${info.id}"]`);
     // Do NOT remove if an email has been deselected without the user's knowledge.
       if (!stillPresent) return; 
 
@@ -91,7 +99,7 @@
 
     observer = new MutationObserver((mutations) => {
       for (const m of mutations) {
-        const row = m.target.closest("tr.zA");   // A checkbox changed. Find its row and process it.
+        const row = findRow(m.target);   // A checkbox changed. Find its row and process it.
         if (row) queueRow(row);
       }
     });
